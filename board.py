@@ -38,10 +38,12 @@ class Board():
             return 'draw'
         return 'continue'
 
-
+    def get_available_moves(self):
+        return sorted([(row, col) for row in range(3) for col in range(3) if self.board[row][col] == ''], key = lambda cord: (cord[0], cord[1]))
 
 if __name__ == "__main__":
     brd = Board()
     brd.make_move((1, 1), 'x')
     print(brd)
     print(brd.get_status())
+    print(brd.get_available_moves())
