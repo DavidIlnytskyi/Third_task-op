@@ -76,6 +76,9 @@ class BinaryTree():
                     recursive(self, root.right)
 
         left = True
-        recursive(self, root)
+        recursive(self, root.left)
         left = False
-        recursive(self, root)
+        recursive(self, root.right)
+        if self.result_left >= self.result_right:
+            return root.left.turn_cord
+        return root.right.turn_cord

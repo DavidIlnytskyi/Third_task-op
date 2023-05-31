@@ -22,7 +22,10 @@ class Board():
 
     def computer_move(self):
         '''Computes move by a tree'''
-        pass
+        tree = BinaryTree()
+        tree.build_tree(tree.root, brd)
+        move = tree.check(tree.root)
+        self.make_move(move, '0')
 
     def get_status(self):
         '''Returns status of a board'''
@@ -57,13 +60,3 @@ class Board():
             res.board[cord[0]][cord[1]] = cord[2]
         res.previous_player = self.previous_player
         return res
-
-if __name__ == "__main__":
-    brd = Board()
-    brd.make_move((1, 1), 'x')
-    tree = BinaryTree()
-    tree.build_tree(tree.root, brd)
-    tree.check()
-    print(brd)
-    print(brd.get_status())
-    print(brd.clone_board())
