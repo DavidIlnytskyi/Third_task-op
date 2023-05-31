@@ -5,6 +5,9 @@ class BinaryTree():
     '''Binary tree'''
     def __init__(self):
         self.root = Node()
+        self.result_left = 0
+        self.result_right = 0
+
 
     def build_tree(self, root, board):
         '''Builds a tree'''
@@ -37,3 +40,42 @@ class BinaryTree():
 
                 if len(board.get_available_moves()) != 2:
                     self.build_tree(root.right, root.right.brd)
+
+    def check(self, root):
+        '''Checks better move'''
+        def recursive(self, root):
+            if root.left is not None:
+                if root.left.brd.get_status() == 'x':
+                    if left:
+                        self.result_left += 1
+                    else:
+                        self.result_left += 1
+                elif root.left.brd.get_status() == '0':
+                    if left:
+                        self.result_left -= 1
+                    else:
+                        self.result_right -= 1
+                elif root.left.brd.get_status() == 'draw':
+                    pass
+                else:
+                    recursive(self, root.left)
+            if root.right is not None:
+                if root.right.brd.get_status() == 'x':
+                    if left:
+                        self.result_left += 1
+                    else:
+                        self.result_right += 1
+                elif root.right.brd.get_status() == '0':
+                    if left:
+                        self.result_left -= 1
+                    else:
+                        self.result_right -= 1
+                elif root.right.brd.get_status() == 'draw':
+                    pass
+                else:
+                    recursive(self, root.right)
+
+        left = True
+        recursive(self, root)
+        left = False
+        recursive(self, root)
