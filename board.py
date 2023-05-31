@@ -1,6 +1,5 @@
 '''Represents board for tic-tac-toe game'''
 from btree import BinaryTree
-from btnode import Node
 
 
 class Board():
@@ -18,12 +17,12 @@ class Board():
 
     def __str__(self):
         '''Returns str representation of a board'''
-        return (f'{self.board[0]}\n{self.board[1]}\n{self.board[2]}')
+        return f'{self.board[0]}\n{self.board[1]}\n{self.board[2]}'
 
     def computer_move(self):
         '''Computes move by a tree'''
         tree = BinaryTree()
-        tree.build_tree(tree.root, brd)
+        tree.build_tree(tree.root, self)
         move = tree.check(tree.root)
         self.make_move(move, '0')
 

@@ -20,7 +20,7 @@ class BinaryTree():
         else:
             if len(board.get_available_moves()) < 2:
                 return
-            if len(board.get_available_moves()) > 2:
+            if len(board.get_available_moves()) >= 2:
                 root.left = Node(board.get_available_moves()[0])
                 root.left.brd = board.clone_board()
                 if root.left.brd.previous_player == 'x':
@@ -47,14 +47,14 @@ class BinaryTree():
             if root.left is not None:
                 if root.left.brd.get_status() == 'x':
                     if left:
-                        self.result_left += 1
-                    else:
-                        self.result_left += 1
-                elif root.left.brd.get_status() == '0':
-                    if left:
                         self.result_left -= 1
                     else:
-                        self.result_right -= 1
+                        self.result_left -= 1
+                elif root.left.brd.get_status() == '0':
+                    if left:
+                        self.result_left += 1
+                    else:
+                        self.result_right += 1
                 elif root.left.brd.get_status() == 'draw':
                     pass
                 else:
@@ -62,14 +62,14 @@ class BinaryTree():
             if root.right is not None:
                 if root.right.brd.get_status() == 'x':
                     if left:
-                        self.result_left += 1
-                    else:
-                        self.result_right += 1
-                elif root.right.brd.get_status() == '0':
-                    if left:
                         self.result_left -= 1
                     else:
                         self.result_right -= 1
+                elif root.right.brd.get_status() == '0':
+                    if left:
+                        self.result_left += 1
+                    else:
+                        self.result_right += 1
                 elif root.right.brd.get_status() == 'draw':
                     pass
                 else:
