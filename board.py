@@ -40,12 +40,15 @@ class Board():
 
     def get_available_moves(self):
         '''Returns available moves on a board'''
-        return sorted([(row, col) for row in range(3) for col in range(3) if self.board[row][col] == ''], key = lambda cord: (cord[0], cord[1]))
+        return sorted([(row, col) for row in range(3) \
+                       for col in range(3) if self.board[row][col] == ''], \
+                        key = lambda cord: (cord[0], cord[1]))
 
     def clone_board(self):
         '''clones board'''
         res = Board()
-        for cord in [(row, col, self.board[row][col]) for row in range(3) for col in range(3) if self.board[row][col] != '']:
+        for cord in [(row, col, self.board[row][col]) \
+                     for row in range(3) for col in range(3) if self.board[row][col] != '']:
             res.board[cord[0]][cord[1]] = cord[2]
         return res
 
